@@ -41,8 +41,8 @@ class JoblyApi {
 		return res.company
 	}
 
-	static async getCompanies() {
-		let res = await this.request('companies')
+	static async getCompanies(name) {
+		let res = await this.request('companies', { name })
 		return res.companies
 	}
 
@@ -51,13 +51,23 @@ class JoblyApi {
 		return res.user
 	}
 
-	static async getJobs() {
-		let res = await this.request('jobs')
+	static async getJobs(jobTitle) {
+		let res = await this.request('jobs', { jobTitle })
 		return res.jobs
 	}
 
 	static async apply(username, id) {
 		await this.request(`users/${username}/jobs/${id}`, {}, 'post')
+	}
+
+	static async login(data) {
+		let res = await this.request('auth/token', data, 'post')
+		return res.token
+	}
+
+	static async signup(data) {
+		let res = await this.request('auth/register', data, 'post')
+		return res.token
 	}
 
 	// obviously, you'll add a lot here ...
