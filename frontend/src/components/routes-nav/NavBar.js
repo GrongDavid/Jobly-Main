@@ -47,17 +47,19 @@ function NavBar({ logout, curUser }) {
 					</div>
 				</div>
 			) : (
-				<div className='container-fluid'>
-					<div className='navbar-nav'>
-						<NavLink className='navbar-brand' to='/'>
-							Jobly
-						</NavLink>
-						<NavLink className='nav-link active' to='/signup'>
-							Signup
-						</NavLink>
-						<NavLink className='nav-link active' to='/login'>
-							Login
-						</NavLink>
+				<div className='container-fluid '>
+					<NavLink className='navbar-brand' to='/'>
+						Jobly
+					</NavLink>
+					<div className='navbar-nav justify-content-end'>
+						<div className='d-flex'>
+							<NavLink className='nav-link active' to='/signup'>
+								Signup
+							</NavLink>
+							<NavLink className='nav-link active' to='/login'>
+								Login
+							</NavLink>
+						</div>
 					</div>
 				</div>
 			)}

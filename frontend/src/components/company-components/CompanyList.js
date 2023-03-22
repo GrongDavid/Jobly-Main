@@ -1,15 +1,7 @@
 import { React, useState } from 'react'
-import CompanyDetail from './CompanyDetail'
 import { NavLink } from 'react-router-dom'
 
 function CompanyList({ companies, alone = true }) {
-	// const [activeLink, setActiveLink] = useState(true)
-	// const [curHeader, setCurHeader] = useState('')
-
-	// const showDetails = (isActive, curHeader) => {
-	// 	setActiveLink(isActive)
-	// }
-
 	const listCompanies = () => {
 		return companies.map((company) => (
 			<li key={company.handle} className={alone ? 'lone-list' : 'list'}>
@@ -26,7 +18,7 @@ function CompanyList({ companies, alone = true }) {
 		<div className='CompanyList'>
 			<div align='center'>
 				<NavLink to='/companies' className='list-title-link fw-bold'>
-					<h1 className='list-title fw-bold'>Companies</h1>
+					<h1 className='list-title fw-bold gradient'>Companies</h1>
 				</NavLink>
 			</div>
 			<div className='row'>

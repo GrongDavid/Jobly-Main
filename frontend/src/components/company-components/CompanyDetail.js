@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { JoblyApi } from '../../api'
 import JobList from '../job-components/JobList'
 
-function CompanyDetail({ companies }) {
+function CompanyDetail({ companies, curUser, apply }) {
 	const { handle } = useParams()
 	console.log(handle)
 	const [curCompany, setCurCompany] = useState(null)
@@ -39,7 +39,11 @@ function CompanyDetail({ companies }) {
 							{curCompany.name} <br /> {curCompany.description}
 						</li>
 						<li>
-							<JobList companyJobs={curCompany.jobs} />
+							<JobList
+								companyJobs={curCompany.jobs}
+								curUser={curUser}
+								apply={apply}
+							/>
 						</li>
 					</ul>
 				</div>

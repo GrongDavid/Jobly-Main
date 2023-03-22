@@ -3,14 +3,15 @@ import './App.css'
 import NavBar from './components/routes-nav/NavBar'
 import JoblyRoutes from './components/routes-nav/JoblyRoutes'
 import { JoblyApi } from './api'
-import { decode } from 'jwt-decode'
+import decode from 'jwt-decode'
+import useLocalStorage from './hooks/useLocalStorage'
 
 function App() {
 	const [jobs, setJobs] = useState([])
 	const [companies, setCompanies] = useState([])
 	const [applicationIds, setApplicationIds] = useState(new Set([]))
 	const [curUser, setCurUser] = useState({ data: null })
-	const [userToken, setUserToken] = useState('token')
+	const [userToken, setUserToken] = useLocalStorage('token')
 
 	async function getJobs() {
 		try {
@@ -41,12 +42,13 @@ function App() {
 
 	useEffect(() => {
 		async function getCurUser() {
+			console.log(userToken)
 			if (userToken) {
 				try {
 					let { username } = decode(userToken)
 					JoblyApi.token = userToken
 
-					let curUser = await JoblyApi.getCurUser(username)
+					let curUser = await JoblyApi.getUser(username)
 					setCurUser({ data: curUser })
 					setApplicationIds(new Set(curUser.applications))
 				} catch (error) {
@@ -69,6 +71,7 @@ function App() {
 		setApplicationIds(new Set([]))
 		setCurUser({ data: null })
 		setUserToken(null)
+		console.log(userToken)
 	}
 
 	async function login(data) {
@@ -80,20 +83,22 @@ function App() {
 		if (applicationIds.has(id)) {
 			return
 		} else {
-			JoblyApi.apply(curUser.username, id)
+			JoblyApi.apply(curUser.data.username, id)
 			setApplicationIds(new Set([...applicationIds, id]))
 		}
+		console.log('here')
 	}
-
+	console.log(curUser)
 	return (
 		<div className='App'>
-			<NavBar logout={logout} curUser={curUser} />
+			<NavBar logout={logout} curUser={curUser.data} />
 			<JoblyRoutes
 				jobs={jobs}
 				companies={companies}
 				curUser={curUser.data}
 				login={login}
 				signup={signup}
+				apply={apply}
 			/>
 		</div>
 	)

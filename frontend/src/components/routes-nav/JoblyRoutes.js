@@ -7,7 +7,14 @@ import Home from '../home/Home'
 import Signup from '../auth/Signup'
 import Login from '../auth/Login'
 
-function JoblyRoutes({ jobs, companies, curUser = null, login, signup }) {
+function JoblyRoutes({
+	jobs,
+	companies,
+	curUser = null,
+	login,
+	signup,
+	apply,
+}) {
 	return (
 		<div>
 			<Routes>
@@ -19,11 +26,20 @@ function JoblyRoutes({ jobs, companies, curUser = null, login, signup }) {
 						/>
 						<Route
 							path='/companies/:handle'
-							element={<CompanyDetail companies={companies} />}
+							element={
+								<CompanyDetail
+									companies={companies}
+									curUser={curUser}
+									apply={apply}
+								/>
+							}
 						/>
-						<Route path='/jobs' element={<JobList jobs={jobs} />} />
+						<Route
+							path='/jobs'
+							element={<JobList jobs={jobs} curUser={curUser} apply={apply} />}
+						/>
 						<Route path='/profile:username' element={<Profile />} />
-						<Route path='/' element={<Home />} />
+						<Route path='/' element={<Home curUser={curUser} />} />
 					</>
 				) : (
 					<>
