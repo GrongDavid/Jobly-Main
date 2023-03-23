@@ -6,6 +6,7 @@ import Profile from '../profile/Profile'
 import Home from '../home/Home'
 import Signup from '../auth/Signup'
 import Login from '../auth/Login'
+import ApplicationList from '../profile/ApplicationList'
 
 function JoblyRoutes({
 	jobs,
@@ -14,6 +15,7 @@ function JoblyRoutes({
 	login,
 	signup,
 	apply,
+	setCurUser,
 }) {
 	return (
 		<div>
@@ -36,9 +38,27 @@ function JoblyRoutes({
 						/>
 						<Route
 							path='/jobs'
-							element={<JobList jobs={jobs} curUser={curUser} apply={apply} />}
+							element={
+								<JobList
+									jobs={jobs}
+									applications={curUser.applications}
+									apply={apply}
+								/>
+							}
 						/>
-						<Route path='/profile:username' element={<Profile />} />
+						<Route
+							path='/profile'
+							element={<Profile curUser={curUser} setCurUser={setCurUser} />}
+						/>
+						<Route
+							path='/profile/applications'
+							element={
+								<ApplicationList
+									jobs={jobs}
+									applications={curUser.applications}
+								/>
+							}
+						/>
 						<Route path='/' element={<Home curUser={curUser} />} />
 					</>
 				) : (

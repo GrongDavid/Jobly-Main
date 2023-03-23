@@ -1,7 +1,9 @@
 import { React, useState } from 'react'
 
-function ApplyButton({ handleApply }) {
-	const [clicked, setClicked] = useState(false)
+function ApplyButton({ handleApply, id, applications }) {
+	const INITIAL_STATE = applications.includes(id) ? true : false
+
+	const [clicked, setClicked] = useState(INITIAL_STATE)
 
 	function click() {
 		handleApply()

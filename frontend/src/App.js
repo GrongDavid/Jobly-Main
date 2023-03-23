@@ -99,6 +99,7 @@ function App() {
 				login={login}
 				signup={signup}
 				apply={apply}
+				setCurUser={setCurUser}
 			/>
 		</div>
 	)

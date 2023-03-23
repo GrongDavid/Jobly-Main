@@ -56,6 +56,11 @@ class JoblyApi {
 		return res.jobs
 	}
 
+	static async getJob(id) {
+		let res = await this.request(`jobs/${id}`)
+		return res.job
+	}
+
 	static async apply(username, id) {
 		await this.request(`users/${username}/jobs/${id}`, {}, 'post')
 	}
@@ -70,7 +75,10 @@ class JoblyApi {
 		return res.token
 	}
 
-	// obviously, you'll add a lot here ...
+	static async saveProfile(username, data) {
+		let res = await this.request(`users/${username}`, data, 'patch')
+		return res.user
+	}
 }
 
 // for now, put token ("testuser" / "password" on class)

@@ -1,8 +1,14 @@
 import React from 'react'
-import ApplyButton from './ApplyButton'
 import JobCard from './JobCard'
 
-function JobList({ jobs, companyJobs = null, curUser = null, apply }) {
+function JobList({
+	jobs,
+	companyJobs = null,
+	applications = null,
+	apply = null,
+	applicationList = false,
+}) {
+	console.log(jobs)
 	const listJobs = (jobList) => {
 		return jobList.map((job) => (
 			<li key={job.id} className='list'>
@@ -12,7 +18,7 @@ function JobList({ jobs, companyJobs = null, curUser = null, apply }) {
 					salary={job.salary}
 					equity={job.equity}
 					companyName={job.companyName}
-					applications={curUser.applications}
+					applications={applications}
 					apply={apply}
 				/>
 			</li>
@@ -21,7 +27,9 @@ function JobList({ jobs, companyJobs = null, curUser = null, apply }) {
 
 	return (
 		<div className='JobList' align='center'>
-			<h1 className='list-title gradient'>Jobs</h1>
+			<h1 className='list-title gradient'>
+				{applicationList ? 'Jobs Applied' : 'Jobs'}
+			</h1>
 			<div className='container' align='center'>
 				<ul>{jobs ? listJobs(jobs) : listJobs(companyJobs)}</ul>
 			</div>

@@ -29,7 +29,11 @@ function JobCard({
 				<br /> Equity: {equity ? equity : 'N/A'}
 				<br />
 			</div>
-			<ApplyButton handleApply={handleApply} />
+			<ApplyButton
+				handleApply={handleApply}
+				id={id}
+				applications={applications}
+			/>
 		</div>
 	)
 }

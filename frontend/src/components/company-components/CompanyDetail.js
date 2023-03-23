@@ -41,7 +41,7 @@ function CompanyDetail({ companies, curUser, apply }) {
 						<li>
 							<JobList
 								companyJobs={curCompany.jobs}
-								curUser={curUser}
+								applications={curUser.applications}
 								apply={apply}
 							/>
 						</li>
