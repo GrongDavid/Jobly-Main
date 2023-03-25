@@ -50,60 +50,58 @@ function Profile({ curUser, setCurUser }) {
 
 	return (
 		<div className='Profile col-md-6 col-lg-4 offset-md-3 offset-lg-4'>
-			<h3>Profile</h3>
-			<div className='card'>
-				<div className='card-body'>
-					<form>
-						<div className='mb-3'>
-							<label className='form-label'>Username</label>
-							<input
-								disabled
-								className='form-control'
-								placeholder={formData.username}
-							/>
-						</div>
-						<div className='mb-3'>
-							<label className='form-label'>First Name</label>
-							<input
-								name='firstName'
-								className='form-control'
-								value={formData.firstName}
-								onChange={handleChange}
-							/>
-						</div>
-						<div className='mb-3'>
-							<label className='form-label'>Last Name</label>
-							<input
-								name='lastName'
-								className='form-control'
-								value={formData.lastName}
-								onChange={handleChange}
-							/>
-						</div>
-						<div className='mb-3'>
-							<label className='form-label'>Email</label>
-							<input
-								name='email'
-								className='form-control'
-								value={formData.email}
-								onChange={handleChange}
-							/>
-						</div>
-						<div className='d-grid'>
-							<NavLink
-								className='btn btn-success mb-2'
-								to='/profile/applications'
-							>
-								Current Applications
-							</NavLink>
-						</div>
-						<div className='d-grid'>
-							<button className='btn btn-primary' onClick={handleSubmit}>
-								Save Changes
-							</button>
-						</div>
-					</form>
-				</div>
+			<h3 className='gradient'>Profile</h3>
+			<div className='form-group'>
+				<form>
+					<div className='mb-3'>
+						<label className='form-label'>Username</label>
+						<input
+							disabled
+							className='form-control'
+							placeholder={formData.username}
+						/>
+					</div>
+					<div className='mb-3'>
+						<label className='form-label'>First Name</label>
+						<input
+							name='firstName'
+							className='form-control'
+							value={formData.firstName}
+							onChange={handleChange}
+						/>
+					</div>
+					<div className='mb-3'>
+						<label className='form-label'>Last Name</label>
+						<input
+							name='lastName'
+							className='form-control'
+							value={formData.lastName}
+							onChange={handleChange}
+						/>
+					</div>
+					<div className='mb-3'>
+						<label className='form-label'>Email</label>
+						<input
+							name='email'
+							className='form-control'
+							value={formData.email}
+							onChange={handleChange}
+						/>
+					</div>
+					<div className='d-grid'>
+						<NavLink
+							className='btn btn-success mb-2'
+							to='/profile/applications'
+						>
+							Current Applications
+						</NavLink>
+					</div>
+					<div className='d-grid'>
+						<button className='btn btn-primary' onClick={handleSubmit}>
+							Save Changes
+						</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	)

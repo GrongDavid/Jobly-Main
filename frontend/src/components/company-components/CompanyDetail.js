@@ -33,7 +33,7 @@ function CompanyDetail({ companies, curUser, apply }) {
 					</ul>
 				</div>
 				<div className='col' align='center'>
-					<h1 className='list-title fw-bold'>Current Jobs</h1>
+					<h1 className='list-title fw-bold gradient'>Current Jobs</h1>
 					<ul>
 						<li>
 							{curCompany.name} <br /> {curCompany.description}
